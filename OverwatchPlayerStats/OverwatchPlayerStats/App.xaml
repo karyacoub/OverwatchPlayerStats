@@ -3,6 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="OverwatchPlayerStats.App">
 	<Application.Resources>
-    
+        <ResourceDictionary>
+            <OnPlatform x:TypeArguments="x:String" x:Key="bignoodletoo">
+                <On Platform="Android" Value="fonts/bignoodletoo.ttf#BigNoodleTooOblique" />
+                <On Platform="UWP" Value="/Assets/fonts/bignoodletoo.ttf#BigNoodleTooOblique" />
+                <On Platform="iOS" Value="fonts/bignoodletoo" />
+            </OnPlatform>
+        </ResourceDictionary>
 	</Application.Resources>
 </Application>

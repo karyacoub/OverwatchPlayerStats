@@ -11,12 +11,13 @@ namespace OverwatchPlayerStats
 		{
 			InitializeComponent();
 
-			MainPage = new MainPage();
+            MainPage = new SearchPage();
 		}
 
 		protected override void OnStart ()
 		{
 			// Handle when your app starts
+
 		}
 
 		protected override void OnSleep ()
