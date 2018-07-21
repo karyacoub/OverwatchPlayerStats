@@ -10,11 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace OverwatchPlayerStats
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SearchPage : ContentPage
+	public partial class MainPage : ContentPage
 	{
-		public SearchPage ()
+		public MainPage ()
 		{
 			InitializeComponent ();
 		}
-	}
+    }
 }

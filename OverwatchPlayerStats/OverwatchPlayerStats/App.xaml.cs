@@ -11,8 +11,8 @@ namespace OverwatchPlayerStats
 		{
 			InitializeComponent();
 
-            MainPage = new SearchPage();
-		}
+            MainPage = new MainPage();
+        }
 
 		protected override void OnStart ()
 		{
