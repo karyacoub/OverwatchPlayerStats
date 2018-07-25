@@ -19,6 +19,7 @@ namespace OverwatchPlayerStats
             // Remove navigation bar, as it is unnecessary for this page
             NavigationPage.SetHasNavigationBar(this, false);
 
+            // insert user's search term from the search bar in MainPage into the search bar for this page
             searchBar.Text = searchTerm;
         }
 	}
