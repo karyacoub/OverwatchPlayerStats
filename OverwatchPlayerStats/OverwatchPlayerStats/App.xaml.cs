@@ -10,8 +10,8 @@ namespace OverwatchPlayerStats
 		public App ()
 		{
 			InitializeComponent();
-            // Comment to test branch merging
-            MainPage = new MainPage();
+            
+            MainPage = new NavigationPage(new MainPage());
         }
 
 		protected override void OnStart ()

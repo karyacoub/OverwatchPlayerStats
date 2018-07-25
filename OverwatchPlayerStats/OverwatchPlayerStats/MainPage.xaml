@@ -8,7 +8,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
-                <!-- <RowDefinition Height="*" /> -->
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -20,17 +20,19 @@
                    Source="logo.png" Aspect="AspectFit"
                    HorizontalOptions="Center" VerticalOptions="Center" />
             <SearchBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" 
-                   x:Name="search_bar"
+                   x:Name="searchBar"
+                   Margin="0, 20, 20, 0"
                    Placeholder="Username#12345" PlaceholderColor="DimGray"
+                   CancelButtonColor="White"
                    FontFamily="{StaticResource bignoodletoo}" FontSize="Medium" TextColor="White"
-                   VerticalOptions="Center" />
-            
-            <!-- Not sure if I want this button in yet -->
-            <!--<Button Grid.Row="2" Grid.Column="1" 
+                   VerticalOptions="Center" 
+                   SearchButtonPressed="searchButtonPressed"/>
+            <Button Grid.Row="2" Grid.Column="1" 
                     Text="Search"
                     FontFamily="{StaticResource bignoodletoo}" FontSize="Medium" 
                     BackgroundColor="#FA9C1D" 
-                    HorizontalOptions="Center" VerticalOptions="Center" /> -->
+                    HorizontalOptions="Center" VerticalOptions="Center" 
+                    Clicked="searchButtonPressed"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
