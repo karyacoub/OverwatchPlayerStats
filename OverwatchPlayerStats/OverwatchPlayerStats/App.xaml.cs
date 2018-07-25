@@ -10,7 +10,7 @@ namespace OverwatchPlayerStats
 		public App ()
 		{
 			InitializeComponent();
-
+            // Comment to test branch merging
             MainPage = new MainPage();
         }
 
