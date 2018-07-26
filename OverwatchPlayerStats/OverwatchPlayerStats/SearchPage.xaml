@@ -10,7 +10,10 @@
                    Placeholder="Username#12345" PlaceholderColor="DimGray"
                    CancelButtonColor="White"
                    FontFamily="{StaticResource bignoodletoo}" FontSize="Medium" TextColor="White"
-                   VerticalOptions="Center" />
+                   VerticalOptions="Center" 
+                   TextChanged="onSearchbarTextChanged"/>
+            <ListView x:Name="playerList"
+                IsPullToRefreshEnabled="false" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
