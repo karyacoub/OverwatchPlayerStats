@@ -16,7 +16,9 @@ namespace OverwatchPlayerStats
 
         public string findUser(string playerUsername)
         {
-            return getResponseString(playerUsername);
+            string response = getResponseString(playerUsername);
+            Player[] item = Newtonsoft.Json.JsonConvert.DeserializeObject<Player[]>(response);
+            return response;
         }
     }
 }
