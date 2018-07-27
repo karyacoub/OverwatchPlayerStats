@@ -21,13 +21,16 @@ namespace OverwatchPlayerStats
 
             // insert user's search term from the search bar in MainPage into the search bar for this page
             searchBar.Text = searchTerm;
+
+            // the searchbar OnTextChanged event handler isn't called after the above line for some reason,
+            // so call it here
         }
 
         private void onSearchbarTextChanged(object sender, TextChangedEventArgs e)
         {
             PlayerFinder playerSearch = new PlayerFinder();
             playerSearch.setPlayerUsername(searchBar.Text);
-            DisplayAlert("", "hi", "OK");
+            playerSearch.findUser();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace OverwatchPlayerStats
                 HttpResponseMessage response = client.GetAsync(playerUsername).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    return response.ReasonPhrase;
+                    return response.Content.ReadAsStringAsync().Result;
                 }
             }
 
