@@ -8,7 +8,6 @@ namespace OverwatchPlayerStats
     abstract class APIRequester
     {
         protected HttpClient client;
-        protected string playerUsername;
 
         protected APIRequester()
         {
@@ -16,8 +15,6 @@ namespace OverwatchPlayerStats
 
             // ensure that the string that is returned is in JSON format
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            playerUsername = null;
         }
 
         // dispose of client when object is garbage-collected
@@ -26,11 +23,6 @@ namespace OverwatchPlayerStats
             client.Dispose();
         }
 
-        public void setPlayerUsername(string username)
-        {
-            playerUsername = username;
-        }
-
-        protected abstract string getResponseString();
+        protected abstract string getResponseString(string playerUsername);
     }
 }

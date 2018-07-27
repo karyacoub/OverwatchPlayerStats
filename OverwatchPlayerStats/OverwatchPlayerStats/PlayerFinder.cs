@@ -7,28 +7,25 @@ namespace OverwatchPlayerStats
 {
     class PlayerFinder : APIRequester
     {
+        private const string URL = "https://playoverwatch.com/en-us/search/account-by-name/";
         public PlayerFinder() : base()
         {
-            client.BaseAddress = new Uri("https://playoverwatch.com/en-us/search/account-by-name/");
+            client.BaseAddress = new Uri(URL);
         }
 
-        protected override string getResponseString()
+        protected override string getResponseString(string playerUsername)
         {
-            // if playerUsername is not set before this method is called, return null
-            if (!String.IsNullOrEmpty(playerUsername))
+            HttpResponseMessage response = client.GetAsync(playerUsername).Result;
+            if (response.IsSuccessStatusCode)
             {
-                HttpResponseMessage response = client.GetAsync(playerUsername).Result;
-                if (response.IsSuccessStatusCode)
-                {
-                    return response.Content.ReadAsStringAsync().Result;
-                }
+                return response.Content.ReadAsStringAsync().Result;
             }
 
-            return null;
+            return String.Format("{0}: {1}", response.StatusCode, response.ReasonPhrase);
         }
-        public string findUser()
+        public string findUser(string playerUsername)
         {
-            return getResponseString();
+            return getResponseString(playerUsername);
         }
     }
 }
