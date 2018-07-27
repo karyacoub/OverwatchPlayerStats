@@ -23,6 +23,15 @@ namespace OverwatchPlayerStats
             client.Dispose();
         }
 
-        protected abstract string getResponseString(string playerUsername);
+        protected string getResponseString(string parameters)
+        {
+            HttpResponseMessage response = client.GetAsync(parameters).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return response.Content.ReadAsStringAsync().Result;
+            }
+
+            return String.Format("{0}: {1}", response.StatusCode, response.ReasonPhrase);
+        }
     }
 }
