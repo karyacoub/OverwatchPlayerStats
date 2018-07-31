@@ -14,11 +14,14 @@ namespace OverwatchPlayerStats
             client.BaseAddress = new Uri(URL);
         }
 
-        public string findUser(string playerUsername)
+        public Player[] findUser(string playerUsername)
         {
             string response = getResponseString(playerUsername);
+
+            // create an array of player objects from the JSON response string
             Player[] item = Newtonsoft.Json.JsonConvert.DeserializeObject<Player[]>(response);
-            return response;
+
+            return item;
         }
     }
 }

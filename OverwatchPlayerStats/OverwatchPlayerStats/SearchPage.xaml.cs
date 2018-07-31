@@ -26,7 +26,8 @@ namespace OverwatchPlayerStats
         private void onSearchbarTextChanged(object sender, TextChangedEventArgs e)
         {
             PlayerFinder playerSearch = new PlayerFinder();
-            playerSearch.findUser(searchBar.Text);
+
+            Player[] playersFound = playerSearch.findUser(searchBar.Text);
         }
     }
 }
