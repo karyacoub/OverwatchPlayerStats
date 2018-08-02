@@ -12,8 +12,13 @@
                    FontFamily="{StaticResource bignoodletoo}" FontSize="Medium" TextColor="White"
                    VerticalOptions="Center" 
                    TextChanged="onSearchbarTextChanged"/>
-            <ListView x:Name="playerList"
-                IsPullToRefreshEnabled="false" />
+            <ListView x:Name="playerList" IsPullToRefreshEnabled="false">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell Text="{Binding urlName}" ImageSource="{Binding portrait}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -12,6 +12,8 @@ namespace OverwatchPlayerStats
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SearchPage : ContentPage
 	{
+        PlayerFinder playerSearch = new PlayerFinder();
+
 		public SearchPage (string searchTerm)
 		{
 			InitializeComponent ();
@@ -25,9 +27,9 @@ namespace OverwatchPlayerStats
 
         private void onSearchbarTextChanged(object sender, TextChangedEventArgs e)
         {
-            PlayerFinder playerSearch = new PlayerFinder();
-
             Player[] playersFound = playerSearch.findUser(searchBar.Text);
+
+            playerList.ItemsSource = playersFound;
         }
     }
 }

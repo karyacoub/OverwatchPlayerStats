@@ -23,11 +23,11 @@ namespace OverwatchPlayerStats
 
     class Player
     {
-        private string platform { get; set; }
-        private string urlName { get; set; }
-        private int level { get; set; }
-        private string portrait { get; set; }
-        private Visibility visibility;
+        public string platform { get; set; }
+        public string urlName { get; set; }
+        public int level { get; set; }
+        public string portrait { get; set; }
+        public Visibility visibility;
 
         public Player(string platform, string urlName, int level, string portrait, Visibility visibility)
         {
