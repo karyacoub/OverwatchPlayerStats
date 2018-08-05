@@ -13,6 +13,7 @@ namespace OverwatchPlayerStats
 	public partial class SearchPage : ContentPage
 	{
         PlayerFinder playerSearch = new PlayerFinder();
+        List<Player> playerSource;
 
 		public SearchPage (string searchTerm)
 		{
@@ -27,9 +28,20 @@ namespace OverwatchPlayerStats
 
         private void onSearchbarTextChanged(object sender, TextChangedEventArgs e)
         {
-            Player[] playersFound = playerSearch.findUser(searchBar.Text);
+            playerSource = playerSearch.findUser(searchBar.Text);
 
-            playerList.ItemsSource = playersFound;
+            playerList.ItemsSource = playerSource;
+            
+        }
+
+        private void lastElementReached(object sender, ItemVisibilityEventArgs e)
+        {
+            if (e.Item.Equals(playerSource[playerSource.Count - 1]))
+            {
+                playerSource = playerSearch.loadTenMorePlayers();
+                playerList.ItemsSource = null; // temporary
+                playerList.ItemsSource = playerSource;
+            }
         }
     }
 }
