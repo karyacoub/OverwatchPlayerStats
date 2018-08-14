@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="MyPage"
              x:Class="OverwatchPlayerStats.SearchPage"
              BackgroundImage="background.png">
     <ContentPage.Content>
@@ -12,7 +13,8 @@
                    FontFamily="{StaticResource bignoodletoo}" FontSize="Medium" TextColor="White"
                    VerticalOptions="Center" 
                    TextChanged="onSearchbarTextChanged"/>
-            <ListView x:Name="playerList" IsPullToRefreshEnabled="false" ItemAppearing="lastElementReached">
+            <ListView x:Name="playerList" 
+                      ItemAppearing="lastElementReached">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ImageCell Text="{Binding urlName}" ImageSource="{Binding portrait}"/>
