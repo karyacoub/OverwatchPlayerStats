@@ -10,8 +10,8 @@ namespace OverwatchPlayerStats
     {
         private const string URL = "https://playoverwatch.com/en-us/search/account-by-name/";
         private ObservableCollection<Player> currentPlayerList = new ObservableCollection<Player>();
-        //private ObservableCollection<Player> playersToDisplay = new ObservableCollection<Player>();
-        //private int lastPlayerIndex = 0; // keeps track of the index position of player in allPlayers that was last displayed
+        private ObservableCollection<Player> allPlayers = new ObservableCollection<Player>();
+        private int lastPlayerIndex = 0; // keeps track of the index position of player in allPlayers that was last displayed
 
         public PlayerFinder() : base()
         {
@@ -30,40 +30,34 @@ namespace OverwatchPlayerStats
 
             // create an array of player objects from the JSON response string
             // if allPlayers is already initialized, reference will be set to a new array, old array will be garbage collected at some point
-            ObservableCollection<Player> newPlayerList = Newtonsoft.Json.JsonConvert.DeserializeObject<ObservableCollection<Player>>(response);
+            allPlayers = Newtonsoft.Json.JsonConvert.DeserializeObject<ObservableCollection<Player>>(response);
 
             currentPlayerList.Clear();
 
-            foreach(Player p in newPlayerList)
-            {
-                currentPlayerList.Add(p);
-            }
+            lastPlayerIndex = 0;
+
+            // load the first 10 players into list
+            loadTenMorePlayers();
         }
 
         // enables loading 10 players at a time to improve performance
-        /*public ObservableCollection<Player> loadTenMorePlayers()
+        public void loadTenMorePlayers()
         {
-            if(allPlayers == null || allPlayers.Count == 0)
+            if (allPlayers != null && allPlayers.Count != 0)
             {
-                lastPlayerIndex = 0;
-                playersToDisplay = new ObservableCollection<Player>();
-                return playersToDisplay;
-            }
-
-            int temp = lastPlayerIndex + 10;
-            for(; lastPlayerIndex < temp; lastPlayerIndex++)
-            {
-                if(lastPlayerIndex >= allPlayers.Count)
+                int temp = lastPlayerIndex + 10;
+                for (; lastPlayerIndex < temp; lastPlayerIndex++)
                 {
-                    break;
-                }
-                else
-                {
-                    playersToDisplay.Add(allPlayers[lastPlayerIndex]);
+                    if (lastPlayerIndex >= allPlayers.Count)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        currentPlayerList.Add(allPlayers[lastPlayerIndex]);
+                    }
                 }
             }
-
-            return playersToDisplay;
-        }*/
+        }
     }
 }

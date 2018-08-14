@@ -12,7 +12,8 @@
                    CancelButtonColor="White"
                    FontFamily="{StaticResource bignoodletoo}" FontSize="Medium" TextColor="White"
                    VerticalOptions="Center" 
-                   TextChanged="onSearchbarTextChanged"/>
+                   TextChanged="onSearchbarTextChanged"
+                   SearchButtonPressed="searchButtonPressed"/>
             <ListView x:Name="playerList" 
                       ItemAppearing="lastElementReached">
                 <ListView.ItemTemplate>

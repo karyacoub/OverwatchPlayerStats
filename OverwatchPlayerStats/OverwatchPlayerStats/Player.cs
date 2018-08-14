@@ -29,6 +29,7 @@ namespace OverwatchPlayerStats
         public string portrait { get; set; }
         public Visibility visibility;
 
+        [JsonConstructor]
         public Player(string platform, string urlName, int level, string portrait, Visibility visibility)
         {
             this.platform = platform;

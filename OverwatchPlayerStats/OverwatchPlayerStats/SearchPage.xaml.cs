@@ -29,18 +29,28 @@ namespace OverwatchPlayerStats
 
             // insert user's search term from the search bar in MainPage into the search bar for this page
             searchBar.Text = searchTerm;
+
+            playerSearch.generatePlayerList(searchTerm);
         }
 
-        private void onSearchbarTextChanged(object sender, TextChangedEventArgs e)
+        private void searchButtonPressed(object sender, EventArgs e)
         {
             playerSearch.generatePlayerList(searchBar.Text);
         }
 
+        private void onSearchbarTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(searchBar.Text == "")
+            {
+                playerSource.Clear();
+            }
+        }
+
         private void lastElementReached(object sender, ItemVisibilityEventArgs e)
         {
-            if (e.Item.Equals(playerSource[playerSource.Count - 1]))
+            if (e.Item == (playerSource[playerSource.Count - 1]))
             {
-                //playerSource = playerSearch.loadTenMorePlayers();
+                playerSearch.loadTenMorePlayers();
             }
         }
     }
