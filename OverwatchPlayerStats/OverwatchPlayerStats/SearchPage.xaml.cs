@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,7 +14,7 @@ namespace OverwatchPlayerStats
 
 		public SearchPage (string searchTerm)
 		{
-			InitializeComponent ();
+            InitializeComponent ();
 
             // Remove navigation bar, as it is unnecessary for this page
             NavigationPage.SetHasNavigationBar(this, false);
@@ -30,12 +26,12 @@ namespace OverwatchPlayerStats
             // insert user's search term from the search bar in MainPage into the search bar for this page
             searchBar.Text = searchTerm;
 
-            playerSearch.generatePlayerList(searchTerm);
+            generatePlayerListAsync();
         }
 
         private void searchButtonPressed(object sender, EventArgs e)
         {
-            playerSearch.generatePlayerList(searchBar.Text);
+            generatePlayerListAsync();
         }
 
         private void onSearchbarTextChanged(object sender, TextChangedEventArgs e)
@@ -52,6 +48,31 @@ namespace OverwatchPlayerStats
             {
                 playerSearch.loadTenMorePlayers();
             }
+        }
+
+        // generate player list asyncronously so the UI thread is not blocked
+        // this is important so that the ActivityIndicator can be displayed in order for the user to know that there is something happening in the background
+        async private Task<int> generatePlayerListAsync()
+        {
+            // display loading indicator
+            setLoadingIndicatorStatus(true);
+
+            // start asyncronous player list generation
+            Task<int> playerListStatus = playerSearch.generatePlayerListAsync(searchBar.Text);
+
+            // the "await" keyword signals that generatePlayerListAsync cannot continue running until playerListStatus finishes up
+            // meanwhile, switch control to the current method's caller so that execution of UI code can continue
+            int status = await playerListStatus;
+
+            setLoadingIndicatorStatus(false);
+
+            return status;
+        }
+
+        private void setLoadingIndicatorStatus(bool status)
+        {
+            loadingIndicator.IsRunning = status;
+            loadingIndicator.IsVisible = status;
         }
     }
 }

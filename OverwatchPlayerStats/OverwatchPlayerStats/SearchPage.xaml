@@ -13,7 +13,8 @@
                    FontFamily="{StaticResource bignoodletoo}" FontSize="Medium" TextColor="White"
                    VerticalOptions="Center" 
                    TextChanged="onSearchbarTextChanged"
-                   SearchButtonPressed="searchButtonPressed"/>
+                   SearchButtonPressed="searchButtonPressed" />
+            <ActivityIndicator x:Name="loadingIndicator" Color="White" IsRunning="true" />
             <ListView x:Name="playerList" 
                       ItemAppearing="lastElementReached">
                 <ListView.ItemTemplate>

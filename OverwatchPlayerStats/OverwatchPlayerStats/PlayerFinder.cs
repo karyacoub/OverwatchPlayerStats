@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Net.Http;
-using System.Net.Http.Headers;
+using System.Threading.Tasks;
 
 namespace OverwatchPlayerStats
 {
@@ -23,14 +21,15 @@ namespace OverwatchPlayerStats
             return currentPlayerList;
         }
 
-        // searches for all player names that match search query
-        public void generatePlayerList(string playerUsername)
+        // asyncronously searches for all player names that match search query
+        async public Task<int> generatePlayerListAsync(string playerUsername)
         {
-            string response = getResponseString(playerUsername);
+            Task<string> response = getResponseStringAsync(playerUsername);
+            string responseString = await response;
 
             // create an array of player objects from the JSON response string
-            // if allPlayers is already initialized, reference will be set to a new array, old array will be garbage collected at some point
-            allPlayers = Newtonsoft.Json.JsonConvert.DeserializeObject<ObservableCollection<Player>>(response);
+            // if allPlayers is already initialized, reference will be set to a new array, old array will be garbage collected
+            allPlayers = Newtonsoft.Json.JsonConvert.DeserializeObject<ObservableCollection<Player>>(responseString);
 
             currentPlayerList.Clear();
 
@@ -38,6 +37,8 @@ namespace OverwatchPlayerStats
 
             // load the first 10 players into list
             loadTenMorePlayers();
+
+            return 1;
         }
 
         // enables loading 10 players at a time to improve performance

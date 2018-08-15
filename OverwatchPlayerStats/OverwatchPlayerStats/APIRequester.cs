@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 
 namespace OverwatchPlayerStats
 {
@@ -23,15 +23,13 @@ namespace OverwatchPlayerStats
             client.Dispose();
         }
 
-        protected string getResponseString(string parameters)
+        async protected Task<string> getResponseStringAsync(string parameters)
         {
-            HttpResponseMessage response = client.GetAsync(parameters).Result;
-            if (response.IsSuccessStatusCode)
-            {
-                return response.Content.ReadAsStringAsync().Result;
-            }
+            Task<string> responseTask = client.GetStringAsync(parameters);
 
-            return String.Format("{0}: {1}", response.StatusCode, response.ReasonPhrase);
+            string responseString = await responseTask;
+
+            return responseString;
         }
     }
 }
