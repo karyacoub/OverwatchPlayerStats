@@ -19,8 +19,25 @@
                       ItemAppearing="lastElementReached">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ImageCell Text="{Binding urlName}" ImageSource="{Binding portrait}"/>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                
+                                <Image Grid.Column="0"
+                                       Source="{Binding portrait}" />
+                                <Label Grid.Column="1" 
+                                       TextColor="White" FontFamily="{StaticResource bignoodletoo}" 
+                                       FontSize="Large"
+                                       Text="{Binding urlName}" />
+                            </Grid>
+                        </ViewCell>
                     </DataTemplate>
+                    <!--<DataTemplate>
+                        <ImageCell Text="{Binding urlName}" ImageSource="{Binding portrait}"/>
+                    </DataTemplate>-->
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
