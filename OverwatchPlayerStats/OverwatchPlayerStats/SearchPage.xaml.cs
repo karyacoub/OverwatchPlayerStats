@@ -61,7 +61,7 @@ namespace OverwatchPlayerStats
             Task<int> playerListStatus = playerSearch.generatePlayerListAsync(searchBar.Text);
 
             // the "await" keyword signals that generatePlayerListAsync cannot continue running until playerListStatus finishes up
-            // meanwhile, switch control to the current method's caller so that execution of UI code can continue
+            // meanwhile, control is given to the current method's caller so that execution of UI code can continue
             int status = await playerListStatus;
 
             setLoadingIndicatorStatus(false);
