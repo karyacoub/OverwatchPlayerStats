@@ -16,7 +16,8 @@
                    SearchButtonPressed="searchButtonPressed" />
             <ActivityIndicator x:Name="loadingIndicator" Color="White" IsRunning="true" />
             <ListView x:Name="playerList" 
-                      ItemAppearing="lastElementReached">
+                      ItemAppearing="lastElementReached"
+                      ItemSelected="itemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell Height="15.0">

@@ -50,6 +50,11 @@ namespace OverwatchPlayerStats
             }
         }
 
+        private void itemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            Content.Navigation.PushAsync(new StatsPage());
+        }
+
         // generate player list asyncronously so the UI thread is not blocked
         // this is important so that the ActivityIndicator can be displayed in order for the user to know that there is something happening in the background
         async private Task<int> generatePlayerListAsync()
