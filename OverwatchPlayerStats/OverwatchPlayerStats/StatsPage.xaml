@@ -3,8 +3,69 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="OverwatchPlayerStats.StatsPage">
 
-    <ContentPage Title="General" BackgroundImage="background.png" Icon="ic_action_person.png" />
-    <ContentPage Title="Combat" BackgroundImage="background.png" Icon="ic_action_swords.png" />
-    <ContentPage Title="Heroes" BackgroundImage="background.png" Icon="ic_action_tracer.png" />
-    <ContentPage Title="Misc." BackgroundImage="background.png" Icon="ic_action_category.png" />
+    <ContentPage Title="General" BackgroundImage="background.png" Icon="ic_action_person.png">
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ActivityIndicator x:Name="loadingIndicator1" Color="White" IsRunning="true" 
+                               Grid.Column="1" Grid.Row="1"/>
+        </Grid>
+    </ContentPage>
+    <ContentPage Title="Combat" BackgroundImage="background.png" Icon="ic_action_swords.png">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ActivityIndicator x:Name="loadingIndicator2" Color="White" IsRunning="true" 
+                               Grid.Column="1" Grid.Row="1"/>
+        </Grid>
+    </ContentPage>
+    <ContentPage Title="Heroes" BackgroundImage="background.png" Icon="ic_action_tracer.png">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ActivityIndicator x:Name="loadingIndicator3" Color="White" IsRunning="true" 
+                               Grid.Column="1" Grid.Row="1"/>
+        </Grid>
+    </ContentPage>
+    <ContentPage Title="Misc." BackgroundImage="background.png" Icon="ic_action_category.png">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ActivityIndicator x:Name="loadingIndicator4" Color="White" IsRunning="true" 
+                               Grid.Column="1" Grid.Row="1"/>
+        </Grid>
+    </ContentPage>
 </TabbedPage>

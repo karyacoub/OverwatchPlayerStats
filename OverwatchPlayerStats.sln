@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverwatchPlayerStats.Android", "OverwatchPlayerStats\OverwatchPlayerStats.Android\OverwatchPlayerStats.Android.csproj", "{1C3D19DE-A928-447A-8379-A6C8A3109585}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverwatchPlayerStats", "OverwatchPlayerStats\OverwatchPlayerStats\OverwatchPlayerStats.csproj", "{ADF5144F-CEA0-4C98-846D-A69B3EFF0AC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OverwatchPlayerStats", "OverwatchPlayerStats\OverwatchPlayerStats\OverwatchPlayerStats.csproj", "{ADF5144F-CEA0-4C98-846D-A69B3EFF0AC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

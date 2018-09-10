@@ -52,7 +52,8 @@ namespace OverwatchPlayerStats
 
         private void itemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Content.Navigation.PushAsync(new StatsPage());
+            Player selectedPlayer = (Player)(e.SelectedItem);
+            Content.Navigation.PushAsync(new StatsPage(selectedPlayer.platform, selectedPlayer.urlName));
         }
 
         // generate player list asyncronously so the UI thread is not blocked
