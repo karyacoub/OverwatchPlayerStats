@@ -14,7 +14,22 @@
                    VerticalOptions="Center" 
                    TextChanged="onSearchbarTextChanged"
                    SearchButtonPressed="searchButtonPressed" />
-            <ActivityIndicator x:Name="loadingIndicator" Color="White" IsRunning="true" />
+            
+            <Grid  VerticalOptions="End" x:Name="loadingGrid" IsVisible="false">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ActivityIndicator x:Name="loadingIndicator" Color="White" IsRunning="false" 
+                               Grid.Column="1" Grid.Row="1"/>
+            </Grid>
+            
             <ListView x:Name="playerList" 
                       ItemAppearing="lastElementReached"
                       ItemSelected="itemSelected">

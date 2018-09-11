@@ -14,7 +14,7 @@ namespace OverwatchPlayerStats
 
         async public Task<Statistics> generateStatsObjectAsync(string platform, string username)
         {
-            string parameters = string.Format("{0}/us/{1}/complete", platform, username);
+            string parameters = string.Format("{0}/us/{1}", platform, username);
 
             Task<string> response = getResponseStringAsync(parameters);
             string responseString = await response;

@@ -4,8 +4,7 @@
              x:Class="OverwatchPlayerStats.StatsPage">
 
     <ContentPage Title="General" BackgroundImage="background.png" Icon="ic_action_person.png">
-        
-        <Grid>
+        <Grid x:Name="loadingGrid1" IsVisible="false">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -20,8 +19,9 @@
                                Grid.Column="1" Grid.Row="1"/>
         </Grid>
     </ContentPage>
+    
     <ContentPage Title="Combat" BackgroundImage="background.png" Icon="ic_action_swords.png">
-        <Grid>
+        <Grid x:Name="loadingGrid2" IsVisible="false">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -36,8 +36,9 @@
                                Grid.Column="1" Grid.Row="1"/>
         </Grid>
     </ContentPage>
+    
     <ContentPage Title="Heroes" BackgroundImage="background.png" Icon="ic_action_tracer.png">
-        <Grid>
+        <Grid x:Name="loadingGrid3" IsVisible="false">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -52,8 +53,9 @@
                                Grid.Column="1" Grid.Row="1"/>
         </Grid>
     </ContentPage>
+
     <ContentPage Title="Misc." BackgroundImage="background.png" Icon="ic_action_category.png">
-        <Grid>
+        <Grid x:Name="loadingGrid4" IsVisible="false">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />

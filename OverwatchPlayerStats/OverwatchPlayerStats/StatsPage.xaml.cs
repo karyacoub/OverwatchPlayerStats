@@ -30,27 +30,39 @@ namespace OverwatchPlayerStats
 
         async private Task<Statistics> generateStatsObjectAsync(string platform, string username)
         {
-            setLoadingIndicatorStatus(loadingIndicator1, true);
-            setLoadingIndicatorStatus(loadingIndicator2, true);
-            setLoadingIndicatorStatus(loadingIndicator3, true);
-            setLoadingIndicatorStatus(loadingIndicator4, true);
+            setLoadingStatus(loadingGrid1, loadingIndicator1, true);
+            setLoadingStatus(loadingGrid2, loadingIndicator2, true);
+            setLoadingStatus(loadingGrid3, loadingIndicator3, true);
+            setLoadingStatus(loadingGrid4, loadingIndicator4, true);
 
             Task<Statistics> playerStatsTask = statsGenerator.generateStatsObjectAsync(platform, username);
 
             currentPlayerStats = await playerStatsTask;
 
-            setLoadingIndicatorStatus(loadingIndicator1, false);
-            setLoadingIndicatorStatus(loadingIndicator2, false);
-            setLoadingIndicatorStatus(loadingIndicator3, false);
-            setLoadingIndicatorStatus(loadingIndicator4, false);
+            setLoadingStatus(loadingGrid1, loadingIndicator1, false);
+            setLoadingStatus(loadingGrid2, loadingIndicator2, false);
+            setLoadingStatus(loadingGrid3, loadingIndicator3, false);
+            setLoadingStatus(loadingGrid4, loadingIndicator4, false);
 
             return currentPlayerStats;
+        }
+
+        private void setLoadingStatus(Grid grid, ActivityIndicator loadingIndicator, bool status)
+        {
+            grid.IsVisible = status;
+            loadingIndicator.IsVisible = status;
+            loadingIndicator.IsRunning = status;
         }
 
         private void setLoadingIndicatorStatus(ActivityIndicator indicator, bool status)
         {
             indicator.IsRunning = status;
             indicator.IsVisible = status;
+        }
+
+        private void setLoadingGridVisibility(Grid grid, bool status)
+        {
+            grid.IsVisible = status;
         }
     }
 }

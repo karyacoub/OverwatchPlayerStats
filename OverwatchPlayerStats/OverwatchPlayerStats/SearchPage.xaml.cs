@@ -61,7 +61,7 @@ namespace OverwatchPlayerStats
         async private Task<int> generatePlayerListAsync()
         {
             // display loading indicator
-            setLoadingIndicatorStatus(true);
+            setLoadingStatus(loadingGrid, loadingIndicator, true);
 
             // start asyncronous player list generation
             Task<int> playerListStatus = playerSearch.generatePlayerListAsync(searchBar.Text);
@@ -70,15 +70,27 @@ namespace OverwatchPlayerStats
             // meanwhile, control is given to the current method's caller so that execution of UI code can continue
             int status = await playerListStatus;
 
-            setLoadingIndicatorStatus(false);
+            setLoadingStatus(loadingGrid, loadingIndicator, false);
 
             return status;
         }
 
-        private void setLoadingIndicatorStatus(bool status)
+        private void setLoadingStatus(Grid grid, ActivityIndicator loadingIndicator, bool status)
         {
-            loadingIndicator.IsRunning = status;
+            grid.IsVisible = status;
             loadingIndicator.IsVisible = status;
+            loadingIndicator.IsRunning = status;
+        }
+
+        private void setLoadingIndicatorStatus(ActivityIndicator indicator, bool status)
+        {
+            indicator.IsRunning = status;
+            indicator.IsVisible = status;
+        }
+
+        private void setLoadingGridVisibility(Grid grid, bool status)
+        {
+            grid.IsVisible = status;
         }
     }
 }
