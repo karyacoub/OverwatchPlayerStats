@@ -16,10 +16,5 @@ namespace OverwatchPlayerStats
         public int level { get; set; }
         [JsonProperty("endorsement")]
         public EndorsementStats endorsement { get; set; }
-
-        public Statistics(/*EndorsementStats endorsement*/)
-        {
-            //this.endorsement = new EndorsementStats(endorsement);
-        }
     }
 }
