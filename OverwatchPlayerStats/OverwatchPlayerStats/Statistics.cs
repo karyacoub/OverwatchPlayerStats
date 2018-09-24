@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,15 +10,16 @@ namespace OverwatchPlayerStats
 {
     class Statistics
     {
-        public string name { get; set; }
-
+        [JsonProperty("username")]
+        public string username { get; set; }
+        [JsonProperty("level")]
         public int level { get; set; }
-        public int prestige { get; set; }
-        public int totalLevel { get; set; }
+        [JsonProperty("endorsement")]
+        public EndorsementStats endorsement { get; set; }
 
-        public string levelIcon { get; set; }
-        public string prestigeIcon { get; set; }
-
-        public int gamesWon { get; set; }
+        public Statistics(/*EndorsementStats endorsement*/)
+        {
+            //this.endorsement = new EndorsementStats(endorsement);
+        }
     }
 }
