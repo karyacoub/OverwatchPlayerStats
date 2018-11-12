@@ -11,11 +11,12 @@ namespace OverwatchPlayerStats
            data member into competitive and quickplay. */
         
         [JsonProperty("top_heroes")]
-        public TopHeroes topHeroStats;
+        public TopHeroes topHeroStats { get; set; }
 
-        /*[JsonProperty("combat")]
+        [JsonProperty("combat")]
+        public Combat combatStats { get; set; }
 
-        [JsonProperty("match_awards")]
+        /*[JsonProperty("match_awards")]
 
         [JsonProperty("assists")]
 

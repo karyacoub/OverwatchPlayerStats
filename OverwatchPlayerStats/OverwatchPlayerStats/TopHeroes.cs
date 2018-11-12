@@ -43,76 +43,76 @@ namespace OverwatchPlayerStats
     class TimePlayedStat
     {
         [JsonProperty("hero")]
-        public string hero;
+        public string hero { get; set; }
         [JsonProperty("img")]
-        public string img;
+        public string img { get; set; }
         [JsonProperty("played")]
-        public string timePlayed;
+        public string timePlayed { get; set; }
     }
 
     class GamesWonStat
     {
         [JsonProperty("hero")]
-        public string hero;
+        public string hero { get; set; }
         [JsonProperty("img")]
-        public string img;
+        public string img { get; set; }
         [JsonProperty("games_won")]
-        public string gamesWon;
+        public string gamesWon { get; set; }
     }
 
     class WeaponAccuracyStat
     {
         [JsonProperty("hero")]
-        public string hero;
+        public string hero { get; set; }
         [JsonProperty("img")]
-        public string img;
+        public string img { get; set; }
         [JsonProperty("weapon_accuracy")]
-        public string weaponAccuracy;
+        public string weaponAccuracy { get; set; }
     }
 
     class ElimsPerLifeStat
     {
         [JsonProperty("hero")]
-        public string hero;
+        public string hero { get; set; }
         [JsonProperty("img")]
-        public string img;
+        public string img { get; set; }
         [JsonProperty("eliminations_per_life")]
-        public string elimsPerLife;
+        public string elimsPerLife { get; set; }
     }
 
     class BestMultikillStat
     {
         [JsonProperty("hero")]
-        public string hero;
+        public string hero { get; set; }
         [JsonProperty("img")]
-        public string img;
+        public string img { get; set; }
         [JsonProperty("multikill_best")]
-        public string bestMultikill;
+        public string bestMultikill { get; set; }
     }
 
     class GameType
     {
         [JsonProperty("played")]
-        public List<TimePlayedStat> timePlayed;
+        public List<TimePlayedStat> timePlayed { get; set; }
 
         [JsonProperty("games_won")]
-        public List<GamesWonStat> gamesWon;
+        public List<GamesWonStat> gamesWon { get; set; }
 
         [JsonProperty("weapon_accuracy")]
-        public List<WeaponAccuracyStat> weaponAccuracy;
+        public List<WeaponAccuracyStat> weaponAccuracy { get; set; }
 
         [JsonProperty("eliminations_per_life")]
-        public List<ElimsPerLifeStat> elimsPerLife;
+        public List<ElimsPerLifeStat> elimsPerLife { get; set; }
 
         [JsonProperty("multikill_best")]
-        public List<BestMultikillStat> bestMultikill;
+        public List<BestMultikillStat> bestMultikill { get; set; }
     }
 
     class TopHeroes
     {
         [JsonProperty("quickplay")]
-        public GameType quickplay;
+        public GameType quickplay { get; set; }
         [JsonProperty("competitive")]
-        public GameType competitive;
+        public GameType competitive { get; set; }
     }
 }

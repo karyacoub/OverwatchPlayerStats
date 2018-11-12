@@ -17,6 +17,6 @@ namespace OverwatchPlayerStats
         public bool isPrivate { get; set; }
 
         [JsonProperty("stats")]
-        public GameplayStatistics gameplayStats;
+        public GameplayStatistics gameplayStats { get; set; }
     }
 }
