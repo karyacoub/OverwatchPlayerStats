@@ -4,18 +4,12 @@ namespace OverwatchPlayerStats
 {
     struct DeserializedEndorsement
     {
-        [JsonProperty("value")]
-        public double value { get; set; }
-
         [JsonProperty("rate")]
-        public int rate { get; set; }
+        public double value { get; set; }
     }
 
     class EndorsementStats
     {
-        [JsonProperty("level")]
-        public int endorsementLevel { get; set; }
-
         [JsonProperty("sportsmanship")]
         public DeserializedEndorsement sportsmanship { get; set; }
 
@@ -24,5 +18,11 @@ namespace OverwatchPlayerStats
 
         [JsonProperty("teammate")]
         public DeserializedEndorsement teammate { get; set; }
+
+        [JsonProperty("level")]
+        public int endorsementLevel { get; set; }
+
+        [JsonProperty("icon")]
+        public string endorsementIcon { get; set; }
     }
 }
