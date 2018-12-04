@@ -16,11 +16,13 @@ namespace OverwatchPlayerStats
         [JsonProperty("combat")]
         public Combat combatStats { get; set; }
 
-        /*[JsonProperty("match_awards")]
+        [JsonProperty("match_awards")]
+        public MatchAwards matchAWards { get; set; }
 
         [JsonProperty("assists")]
+        public Assists assists { get; set; }
 
-        [JsonProperty("average")]
+        /*[JsonProperty("average")]
 
         [JsonProperty("miscellaneous")]
 
