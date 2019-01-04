@@ -40,7 +40,7 @@ namespace OverwatchPlayerStats
     relevant information about each hero. Hence, in this class heirarchy, each attribute will contain
     a list of heroes and their relevant statistic */
 
-    class TimePlayedStat
+    public class TimePlayedStat
     {
         [JsonProperty("hero")]
         public string hero { get; set; }
@@ -50,7 +50,7 @@ namespace OverwatchPlayerStats
         public string timePlayed { get; set; }
     }
 
-    class GamesWonStat
+    public class GamesWonStat
     {
         [JsonProperty("hero")]
         public string hero { get; set; }
@@ -60,7 +60,7 @@ namespace OverwatchPlayerStats
         public string gamesWon { get; set; }
     }
 
-    class WeaponAccuracyStat
+    public class WeaponAccuracyStat
     {
         [JsonProperty("hero")]
         public string hero { get; set; }
@@ -70,7 +70,7 @@ namespace OverwatchPlayerStats
         public string weaponAccuracy { get; set; }
     }
 
-    class ElimsPerLifeStat
+    public class ElimsPerLifeStat
     {
         [JsonProperty("hero")]
         public string hero { get; set; }
@@ -80,7 +80,7 @@ namespace OverwatchPlayerStats
         public string elimsPerLife { get; set; }
     }
 
-    class BestMultikillStat
+    public class BestMultikillStat
     {
         [JsonProperty("hero")]
         public string hero { get; set; }
@@ -90,7 +90,7 @@ namespace OverwatchPlayerStats
         public string bestMultikill { get; set; }
     }
 
-    class GameType
+    public class GameType
     {
         [JsonProperty("played")]
         public List<TimePlayedStat> timePlayed { get; set; }
@@ -108,7 +108,7 @@ namespace OverwatchPlayerStats
         public List<BestMultikillStat> bestMultikill { get; set; }
     }
 
-    class TopHeroes
+    public class TopHeroes
     {
         [JsonProperty("quickplay")]
         public GameType quickplay { get; set; }

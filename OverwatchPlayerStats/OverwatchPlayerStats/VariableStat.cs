@@ -8,7 +8,7 @@ namespace OverwatchPlayerStats
      * have one object (VariableStat) represent all of them to save on making additional unnecessary classes 
      */
 
-    class VariableStatElement
+    public class VariableStatElement
     {
         [JsonProperty("title")]
         public string title { get; set; }
@@ -16,7 +16,7 @@ namespace OverwatchPlayerStats
         public string value { get; set; }
     }
 
-    class VariableStat
+    public class VariableStat
     {
         [JsonProperty("quickplay")]
         public List<VariableStatElement> quickplay { get; set; }

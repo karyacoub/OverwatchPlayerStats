@@ -2,13 +2,13 @@
 
 namespace OverwatchPlayerStats
 {
-    struct DeserializedEndorsement
+    public class DeserializedEndorsement
     {
         [JsonProperty("rate")]
         public double value { get; set; }
     }
 
-    class EndorsementStats
+    public class EndorsementStats
     {
         [JsonProperty("sportsmanship")]
         public DeserializedEndorsement sportsmanship { get; set; }

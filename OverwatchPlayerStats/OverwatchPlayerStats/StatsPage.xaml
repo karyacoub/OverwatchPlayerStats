@@ -4,20 +4,26 @@
              x:Class="OverwatchPlayerStats.StatsPage">
 
     <ContentPage Title="General" BackgroundImage="background.png" Icon="ic_action_person.png">
-        <Grid x:Name="loadingGrid1" IsVisible="false">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <ActivityIndicator x:Name="loadingIndicator1" Color="White" IsRunning="true" 
+        <StackLayout>
+            <Grid x:Name="loadingGrid1" IsVisible="false">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ActivityIndicator x:Name="loadingIndicator1" Color="White" IsRunning="true" 
                                Grid.Column="1" Grid.Row="1"/>
-        </Grid>
+            </Grid>
+
+            <Grid x:Name="generalGrid" IsVisible="false">
+                
+            </Grid>
+        </StackLayout>
     </ContentPage>
     
     <ContentPage Title="Combat" BackgroundImage="background.png" Icon="ic_action_swords.png">

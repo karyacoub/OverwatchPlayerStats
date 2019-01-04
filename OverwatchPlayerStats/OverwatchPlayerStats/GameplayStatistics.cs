@@ -2,7 +2,7 @@
 
 namespace OverwatchPlayerStats
 {   
-    class GameplayStatistics
+    public class GameplayStatistics
     {
         /* developer's note: each of the following fields has relevant stats for both quickplay and 
            competitive gamemodes. I would have made the top top level of this class heirarchy 

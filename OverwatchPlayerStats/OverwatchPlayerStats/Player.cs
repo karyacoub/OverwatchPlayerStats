@@ -2,7 +2,7 @@
 
 namespace OverwatchPlayerStats
 {
-    class Player
+    public class Player
     {
         [JsonProperty("platform")]
         public string platform { get; set; }

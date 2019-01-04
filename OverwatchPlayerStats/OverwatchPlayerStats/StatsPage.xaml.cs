@@ -15,8 +15,9 @@ namespace OverwatchPlayerStats
     {
         private StatisticsGenerator statsGenerator = new StatisticsGenerator();
         private Statistics currentPlayerStats;
+        private Player currentPlayerInfo;
 
-        public StatsPage(string platform, string username)
+        public StatsPage(Player player)
         {
             InitializeComponent();
 
@@ -25,7 +26,11 @@ namespace OverwatchPlayerStats
 
             On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
 
-            generateStatsObjectAsync(platform, username);
+            currentPlayerInfo = player;
+
+            generateStatsObjectAsync(currentPlayerInfo.platform, currentPlayerInfo.urlName);
+
+            
         }
 
         async private Task<Statistics> generateStatsObjectAsync(string platform, string username)
@@ -43,6 +48,32 @@ namespace OverwatchPlayerStats
             setLoadingStatus(loadingGrid2, loadingIndicator2, false);
             setLoadingStatus(loadingGrid3, loadingIndicator3, false);
             setLoadingStatus(loadingGrid4, loadingIndicator4, false);
+            
+            /* TEMPORARY */
+            Frame portraitFrame = new Frame
+            {
+                Content = new Image
+                {
+                    Source = currentPlayerInfo.portrait,
+                },
+                //HorizontalOptions = LayoutOptions.FillAndExpand,
+                //VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = 10,
+                HasShadow = true
+            };
+
+            Label usernameViewCell = new Label
+            {
+                Text = currentPlayerInfo.urlName,
+                TextColor = Color.White
+            };
+
+            generalGrid.IsVisible = true;
+
+            generalGrid.Children.Add(portraitFrame, 0, 0);
+
+            generalGrid.Children.Add(usernameViewCell, 1, 0);
+            /* TEMPORARY */
 
             return currentPlayerStats;
         }
