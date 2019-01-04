@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace OverwatchPlayerStats
 {
-    /* developer's note: the reason these classes are laid out this way are entirely due to the
+    /* developer's note: the reason these classes are laid out this way is entirely due to the
        way the API outlines the requested JSON object, as well as how the Newtonsoft JSON API 
        deserializes JSON objects. The API lays out the JSON object as the following:
         "top_heroes": {
@@ -36,7 +36,7 @@ namespace OverwatchPlayerStats
                 },
                 ...
     Instead of having each hero be a seperate object, with data members such as playtime, number of games 
-    won, weapon accuracy, ..., each attribute is made a seperate object, which the attribute containing
+    won, weapon accuracy, ..., each attribute is made into a seperate object, which the attribute containing
     relevant information about each hero. Hence, in this class heirarchy, each attribute will contain
     a list of heroes and their relevant statistic */
 

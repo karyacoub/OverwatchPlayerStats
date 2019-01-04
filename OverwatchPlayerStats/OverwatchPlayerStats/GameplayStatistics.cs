@@ -14,20 +14,24 @@ namespace OverwatchPlayerStats
         public TopHeroes topHeroStats { get; set; }
 
         [JsonProperty("combat")]
-        public Combat combatStats { get; set; }
+        public VariableStat combatStats { get; set; }
 
         [JsonProperty("match_awards")]
-        public MatchAwards matchAWards { get; set; }
+        public VariableStat matchAWards { get; set; }
 
         [JsonProperty("assists")]
-        public Assists assists { get; set; }
+        public VariableStat assists { get; set; }
 
-        /*[JsonProperty("average")]
+        [JsonProperty("average")]
+        public VariableStat average { get; set; }
 
         [JsonProperty("miscellaneous")]
+        public VariableStat misc { get; set; }
 
         [JsonProperty("best")]
+        public VariableStat best { get; set; }
 
-        [JsonProperty("game")]*/
+        [JsonProperty("game")]
+        public VariableStat game { get; set; }
     }
 }
