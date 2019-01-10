@@ -20,8 +20,8 @@
                                Grid.Column="1" Grid.Row="1"/>
             </Grid>
 
-            <Grid x:Name="generalGrid" IsVisible="false">
-                
+            <Grid x:Name="generalGrid" IsVisible="false" Margin="10, 30, 10, 0">
+
             </Grid>
         </StackLayout>
     </ContentPage>

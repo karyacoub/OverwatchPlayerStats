@@ -7,6 +7,9 @@ namespace OverwatchPlayerStats
         [JsonProperty("platform")]
         public string platform { get; set; }
 
+        [JsonProperty("name")]
+        public string name { get; set; }
+
         [JsonProperty("urlName")]
         public string urlName { get; set; }
 

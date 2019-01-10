@@ -48,31 +48,39 @@ namespace OverwatchPlayerStats
             setLoadingStatus(loadingGrid2, loadingIndicator2, false);
             setLoadingStatus(loadingGrid3, loadingIndicator3, false);
             setLoadingStatus(loadingGrid4, loadingIndicator4, false);
-            
+
             /* TEMPORARY */
             Frame portraitFrame = new Frame
             {
                 Content = new Image
                 {
                     Source = currentPlayerInfo.portrait,
+                    //VerticalOptions = LayoutOptions.FillAndExpand,
+                    //HorizontalOptions = LayoutOptions.FillAndExpand,
+                    Aspect = Aspect.AspectFill
                 },
-                //HorizontalOptions = LayoutOptions.FillAndExpand,
-                //VerticalOptions = LayoutOptions.FillAndExpand,
-                Padding = 10,
+                Padding = 2,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
                 HasShadow = true
             };
 
-            Label usernameViewCell = new Label
+            Label usernameLabel = new Label
             {
-                Text = currentPlayerInfo.urlName,
-                TextColor = Color.White
+                Text = currentPlayerInfo.name,
+                TextColor = Color.White,
+                FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
+                FontAttributes = FontAttributes.Bold,
+                FontFamily = (OnPlatform<string>)(Xamarin.Forms.Application.Current.Resources["bignoodletoo"]),
+                HorizontalOptions = LayoutOptions.Fill,
+                HorizontalTextAlignment = TextAlignment.Center
             };
 
             generalGrid.IsVisible = true;
 
             generalGrid.Children.Add(portraitFrame, 0, 0);
 
-            generalGrid.Children.Add(usernameViewCell, 1, 0);
+            generalGrid.Children.Add(usernameLabel, 1, 0);
             /* TEMPORARY */
 
             return currentPlayerStats;

@@ -42,7 +42,7 @@
                                 <Label Grid.Column="1" 
                                        TextColor="White" FontFamily="{StaticResource bignoodletoo}" 
                                        FontSize="Large"
-                                       Text="{Binding urlName}" />
+                                       Text="{Binding name}" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
