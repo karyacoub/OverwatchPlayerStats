@@ -36,12 +36,23 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell Height="15.0">
-                            <Grid>
-                                <Image Grid.Column="0"
+                            <Grid Margin="10, 1, 10, 1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                
+                                <Frame Padding="2" HasShadow="true">
+                                    <Image Grid.Column="0"
+                                       Aspect="AspectFit"
+                                       HorizontalOptions="Start"
                                        Source="{Binding portrait}" />
+                                </Frame>
                                 <Label Grid.Column="1" 
                                        TextColor="White" FontFamily="{StaticResource bignoodletoo}" 
                                        FontSize="Large"
+                                       HorizontalOptions="FillAndExpand"
+                                       HorizontalTextAlignment="Center"
                                        Text="{Binding name}" />
                             </Grid>
                         </ViewCell>
