@@ -21,42 +21,50 @@ namespace OverwatchPlayerStats
         {
             InitializeComponent();
 
-            // Remove navigation bar, as it is unnecessary for this page
+            // remove navigation bar, as it is unnecessary for this page
             NavigationPage.SetHasNavigationBar(this, false);
 
             On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
 
             currentPlayerInfo = player;
 
-            generateStatsObjectAsync(currentPlayerInfo.platform, currentPlayerInfo.urlName);
-
-            
+            generateUIElements(currentPlayerInfo.platform, currentPlayerInfo.urlName);
         }
 
-        async private Task<Statistics> generateStatsObjectAsync(string platform, string username)
+        async private Task<Statistics> generateUIElements(string platform, string username)
         {
-            setLoadingStatus(loadingGrid1, loadingIndicator1, true);
-            setLoadingStatus(loadingGrid2, loadingIndicator2, true);
-            setLoadingStatus(loadingGrid3, loadingIndicator3, true);
-            setLoadingStatus(loadingGrid4, loadingIndicator4, true);
+            // enable loading indicators
+            setLoadingStatus(true);
 
-            Task<Statistics> playerStatsTask = statsGenerator.generateStatsObjectAsync(platform, username);
+            // generate current player statistics
+            Task<Statistics> currentStatsTask = statsGenerator.generateStatsObjectAsync(platform, username);
+            currentPlayerStats = await currentStatsTask;
 
-            currentPlayerStats = await playerStatsTask;
+            // disable loading indicators
+            setLoadingStatus(false);
 
-            setLoadingStatus(loadingGrid1, loadingIndicator1, false);
-            setLoadingStatus(loadingGrid2, loadingIndicator2, false);
-            setLoadingStatus(loadingGrid3, loadingIndicator3, false);
-            setLoadingStatus(loadingGrid4, loadingIndicator4, false);
+            // generate "General" page UI elements
+            generateGeneralUIElements();
 
-            /* TEMPORARY */
+            // generate "Combat" page UI elements
+
+
+            // generate "Heroes" page UI elements
+
+
+            // generate "Misc." page UI elements
+
+
+            return currentPlayerStats;
+        }
+
+        private void generateGeneralUIElements()
+        {
             Frame portraitFrame = new Frame
             {
                 Content = new Image
                 {
                     Source = currentPlayerInfo.portrait,
-                    //VerticalOptions = LayoutOptions.FillAndExpand,
-                    //HorizontalOptions = LayoutOptions.FillAndExpand,
                     Aspect = Aspect.AspectFill
                 },
                 Padding = 2,
@@ -81,12 +89,17 @@ namespace OverwatchPlayerStats
             generalGrid.Children.Add(portraitFrame, 0, 0);
 
             generalGrid.Children.Add(usernameLabel, 1, 0);
-            /* TEMPORARY */
-
-            return currentPlayerStats;
         }
 
-        private void setLoadingStatus(Grid grid, ActivityIndicator loadingIndicator, bool status)
+        private void setLoadingStatus(bool status)
+        {
+            _setLoadingStatus(loadingGrid1, loadingIndicator1, status);
+            _setLoadingStatus(loadingGrid2, loadingIndicator2, status);
+            _setLoadingStatus(loadingGrid3, loadingIndicator3, status);
+            _setLoadingStatus(loadingGrid4, loadingIndicator4, status);
+        }
+
+        private void _setLoadingStatus(Grid grid, ActivityIndicator loadingIndicator, bool status)
         {
             grid.IsVisible = status;
             loadingIndicator.IsVisible = status;
