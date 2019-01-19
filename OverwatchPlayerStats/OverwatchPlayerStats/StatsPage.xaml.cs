@@ -37,8 +37,11 @@ namespace OverwatchPlayerStats
             setLoadingStatus(true);
 
             // generate current player statistics
-            Task<Statistics> currentStatsTask = statsGenerator.generateStatsObjectAsync(platform, username);
-            currentPlayerStats = await currentStatsTask;
+            if (currentPlayerInfo.isPublic)
+            {
+                Task<Statistics> currentStatsTask = statsGenerator.generateStatsObjectAsync(platform, username);
+                currentPlayerStats = await currentStatsTask;
+            }
 
             // disable loading indicators
             setLoadingStatus(false);
@@ -80,15 +83,40 @@ namespace OverwatchPlayerStats
                 FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
                 FontAttributes = FontAttributes.Bold,
                 FontFamily = (OnPlatform<string>)(Xamarin.Forms.Application.Current.Resources["bignoodletoo"]),
-                HorizontalOptions = LayoutOptions.Fill,
-                HorizontalTextAlignment = TextAlignment.Center
+                Margin = new Thickness(5, 0, 0, 0),
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                HorizontalTextAlignment = TextAlignment.Start
             };
+
+            Frame levelFrame = new Frame
+            {
+                Content = new Label
+                {
+                    Text = string.Format("{0} ", currentPlayerInfo.level),
+                    TextColor = Color.Black,
+                    FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+                    FontFamily = (OnPlatform<string>)(Xamarin.Forms.Application.Current.Resources["bignoodletoo"]),
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    HorizontalTextAlignment = TextAlignment.Center
+                },
+                Margin = new Thickness(5, 0, 0, 0),
+                Padding = new Thickness(6, 2, 6, 2),
+                BackgroundColor = Color.White,
+                VerticalOptions = LayoutOptions.Fill,
+                HorizontalOptions = LayoutOptions.Start,
+                HasShadow = true
+            };
+
+            StackLayout usernameLevelStack = new StackLayout();
+
+            usernameLevelStack.Children.Add(usernameLabel);
+            usernameLevelStack.Children.Add(levelFrame);
 
             generalGrid.IsVisible = true;
 
             generalGrid.Children.Add(portraitFrame, 0, 0);
 
-            generalGrid.Children.Add(usernameLabel, 1, 0);
+            generalGrid.Children.Add(usernameLevelStack, 1, 0);
         }
 
         private void setLoadingStatus(bool status)
